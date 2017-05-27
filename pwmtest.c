@@ -4,7 +4,8 @@ int main(int argc, char **argv)
 {
     int PwmChannel;
     int MyPeriod = 1000000000; //period 设置为1s
-	int MyDuty = MyPeriod * 0.5;
+	float rate = 0.5;
+    int MyDuty = MyPeriod * rate;
 	char *array[3] = {"B", "C", "D"};
 
 	/* handle (optional) flags first */
@@ -34,6 +35,7 @@ int main(int argc, char **argv)
         	printf("PWM enable error!\n");
         	return(-1);
         }
+        printf("PWM_B successfully enabled with period - %dms, duty cycle - %2.1f%%\n", MyPeriod/1000000, rate*100);
     }
 	else if(!strcmp(argv[1],array[1])){
 		PwmChannel = 4;
@@ -55,6 +57,7 @@ int main(int argc, char **argv)
 		printf("PWM enable error!\n");
 		return(-1);
 		}
+		printf("PWM_C successfully enabled with period - %dms, duty cycle - %2.1f%%\n", MyPeriod/1000000, rate*100);
 	}
 	else if(!strcmp(argv[1],array[2])){
 		PwmChannel = 2;
@@ -76,6 +79,7 @@ int main(int argc, char **argv)
 		printf("PWM enable error!\n");
 		return(-1);
 		}
+		printf("PWM_D successfully enabled with period - %dms, duty cycle - %2.1f%%\n", MyPeriod/1000000, rate*100);
 	}
 	else{
 		printf("wrong PWM Channel input\n");
